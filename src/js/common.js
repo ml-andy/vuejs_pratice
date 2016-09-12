@@ -63,21 +63,68 @@
 			url:'https://tw.yahoo.com/',
 			domclass:'p'
 		},
-		created: function () {
-			// `this` 指向 vm 实例
-			console.log('name is: ' + this.name);
-		},
+		// created: function () {
+		// 	console.log('created: ' + this.name);
+		// },
+		// compiled: function () {
+		// 	console.log('compiled: ' + this.name);
+		// },
+		// ready: function () {
+		// 	console.log('ready: ' + this.name);
+		// },
+		// destroyed: function () {
+		// 	console.log('destroyed: ' + this.name);
+		// },
 		methods: {
 			changeName: function(){
 				this.name = 'Wang Yi Hsien';
 				// o.exampleVM.name = 'Wang Yi Hsien';
+				// o.example.fullName='Wang Yi-Hsien';
 				if(this.greeting) this.greeting = false;
 				else this.greeting = true;
 			}
 		},
 		watch: {
 			greeting: function(){
-				console.log('zzz');
+				// console.log('zzz');
+			}
+		}
+	});
+	o.example = new Vue({
+		el: '#example',
+		data: {
+			firstName: 'Andy',
+			lastName: 'Wang',
+			a: 1,
+			b: 100 //與 computed 衝突時，無效
+		},
+		created: function () {
+			console.log('created: ' + this.b);
+		},
+		compiled: function () {
+			console.log('compiled: ' + this.b);
+		},
+		ready: function () {
+			console.log('ready: ' + this.b);
+		},
+		computed: {
+			// 一个计算属性的 getter
+			b: function () {
+				return this.a + 1
+			},
+			fullName: {
+				// getter
+				get: function () {
+					// console.log('get'+this.firstName+'/'+this.lastName);
+					return this.firstName + ' ' + this.lastName
+				},
+				// setter
+				set: function (newValue) {
+					// console.log('set');
+					var names = newValue.split(' ')
+					this.firstName = names[0]
+					this.lastName = names[names.length - 1]
+				}
 			}
 		}
 	});
