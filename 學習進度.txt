@@ -1,1 +1,1 @@
-https://vuejs.org.cn/guide/class-and-style.html
+https://vuejs.org.cn/guide/events.html

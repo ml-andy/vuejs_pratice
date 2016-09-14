@@ -62,7 +62,33 @@
     a={{ a }}, b={{ b }},name={{fullName}}
   </div>
   <div id="example-2" class="appdiv click" v-on:click="changeClass" v-bind:class="[classA, { 'class-c': isC, 'class-b': isB }]">
-    a={{ a }}, b={{ b }},name={{fullName}}
+    name={{fullName}}
+  </div>
+  <div id="example-3" class="appdiv click" v-on:click="changeHeight" v-bind:style="styleObject">
+    <!-- v-if / v-show 不能使用在根本 element( #example-3 ) 上 -->
+    <div class="appdiv_in" v-if="if">
+      name={{fullName}}
+    </div>
+    <div class="appdiv_in" v-else>
+      name={{fullName3}}
+    </div>
+    <div class="appdiv_in" v-show="show">
+      name={{fullName2}}
+    </div>
+  </div>
+  <div id="example-4" class="appdiv click">
+    <ul v-on:click="appendItems">
+      <li v-for="i in items">
+        {{i.msg}}
+      </li>
+    </ul>
+  </div>
+  <div id="example-5" class="appdiv click">
+    <ul v-on:click="appendItems">
+      <li v-for="msg in items">
+        {{$key}}：{{msg}}
+      </li>
+    </ul>
   </div>
 
 </body>

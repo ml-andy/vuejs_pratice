@@ -148,6 +148,7 @@
 			lastName: 'Wang',
 			isC: false,
 			isB: true,
+			classA: 'class-a',
 			a: 1,
 			b: 100 //與 computed 衝突時，無效
 		},
@@ -183,5 +184,61 @@
 			}
 		}
 	});
+	o.example_3 = new Vue({
+		el: '#example-3',
+		data: {
+			fullName: '王逸賢',
+			fullName2: '王婉宇',
+			fullName3: '王安迪',
+			classA: 'class-a',
+			height: 200,
+			if: true,
+			show: false,
+		},
+		computed:{
+			styleObject: function(){
+				return {
+					'background-color' : '#e8e8e8',
+					height : this.height+'px'
+				}
+			}
+		},
+		methods: {
+			changeHeight: function(){
+				// this.height +=5;
+				if(this.show) this.show = false;
+				else this.show = true;
+				if(this.if) this.if = false;
+				else this.if = true;
+			}
+		}
+	});
 	
+	o.example_4 = new Vue({
+		el: '#example-4',
+		data: {
+			items:[
+				{msg:'王'},
+				{msg:'逸'},
+				{msg:'賢'},
+				{msg:'!'}
+			]
+		},
+		methods: {
+			appendItems:function(){
+				this.items.push({msg:new Date()});
+			}
+		}
+	});
+	o.example_5 = new Vue({
+		el: '#example-5',
+		data: {
+			items:{
+				msg:'王',
+				msg2:'逸',
+				msg3:'賢',
+				msg4:'!'
+			}
+		}
+	});
 })//ready end  
