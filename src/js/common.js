@@ -95,6 +95,8 @@
 		data: {
 			firstName: 'Andy',
 			lastName: 'Wang',
+			isA: false,
+			isB: true,
 			a: 1,
 			b: 100 //與 computed 衝突時，無效
 		},
@@ -124,6 +126,59 @@
 					var names = newValue.split(' ')
 					this.firstName = names[0]
 					this.lastName = names[names.length - 1]
+				}
+			}
+		},
+		methods:{
+			changeClass:function(){
+				if(this.isA){
+					this.isA = false;
+					this.isB = true;
+				}else{
+					this.isA = true;
+					this.isB = false;
+				}
+			}
+		}
+	});
+	o.example_2 = new Vue({
+		el: '#example-2',
+		data: {
+			firstName: 'Andy',
+			lastName: 'Wang',
+			isC: false,
+			isB: true,
+			a: 1,
+			b: 100 //與 computed 衝突時，無效
+		},
+		computed: {
+			// 一个计算属性的 getter
+			b: function () {
+				return this.a + 1
+			},
+			fullName: {
+				// getter
+				get: function () {
+					// console.log('get'+this.firstName+'/'+this.lastName);
+					return this.firstName + ' ' + this.lastName
+				},
+				// setter
+				set: function (newValue) {
+					// console.log('set');
+					var names = newValue.split(' ')
+					this.firstName = names[0]
+					this.lastName = names[names.length - 1]
+				}
+			}
+		},
+		methods:{
+			changeClass:function(){
+				if(this.isC){
+					this.isC = false;
+					this.isB = true;
+				}else{
+					this.isC = true;
+					this.isB = false;
 				}
 			}
 		}

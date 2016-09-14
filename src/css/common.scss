@@ -29,6 +29,14 @@ body{
         border: 1px solid #ccc;
         margin-right: 5px;
     }
+    &.class-a{
+        color: #fff;
+        background-color: gray;
+    }
+    &.class-b{
+        color: #fff;
+        background-color: blue;
+    }
 }
 .click{
     cursor: pointer;
