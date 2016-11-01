@@ -18,13 +18,54 @@
 <!---->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>-->
 <!--css-->
 <link rel="stylesheet" href="css/common.css"/>
 <!--js-->
 <script src="js/common.js"></script>
 </head>
 <body>
-  
+  <div id="app">
+    {{ message }}
+  </div>
+  <div id="app-2">
+    <span v-bind:title="message">
+      滑鼠停留久一點可以看到title
+    </span>
+  </div>
+  <div id="app-3">
+    <span v-if="see">用V-if控制出現</span>
+  </div>
+  <div id="app-4">
+    <ul>
+      <li v-for="userid in userid">
+        {{userid.text}}
+      </li>
+    </ul>
+  </div>
+  <div id="app-5">
+    <span>{{ message }}</span>
+    <button v-on:click="btnClick">點我</button>
+  </div>
+  <div id="app-6">
+    <span>{{ message }}</span>
+    <input type="text" v-model="message">
+  </div>
+  <div id="app-7">
+    <ol>
+      <todo-item v-for="todo in todos" v-bind:todo="todo"></todo-item>
+    </ol>
+  </div>
+  <div id="app-8">
+    <span v-once>姓名:{{ msg }}</span>
+    <div v-html="vhtml"></div>
+  </div>
+  <div id="app-9">
+    <span>{{ ok ? 'YES' : 'NO' }}</span>
+    <button v-on:click="change">切換</button>
+  </div>
+  <div id="app-10">
+    <span>{{ msg | checkNum('mgg',mgg) }}</span>
+    <button v-on:click="change">給我換!</button>
+  </div>
 </body>
 </html>
