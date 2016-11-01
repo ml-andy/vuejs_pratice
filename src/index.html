@@ -17,79 +17,14 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 <!---->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>-->
 <!--css-->
 <link rel="stylesheet" href="css/common.css"/>
 <!--js-->
 <script src="js/common.js"></script>
 </head>
 <body>
-  <div id="app" class="appdiv">
-      {{ message }}
-      <input v-model="message">
-  </div>
-
-  <div id="app_ul" class="appdiv">
-    <ul>
-      <li v-for="todo in todos">
-        {{ todo.text }}
-      </li>
-    </ul>
-  </div>
-
-  <div id="app_methods" class="appdiv">
-    <p>{{ message }}</p>
-    <button v-on:click="reverseMessage">Reverse Message</button>
-  </div>
-
-  <div id="app_newTodo" class="appdiv">
-    <input v-model="newTodo" v-on:keyup.enter="addTodo">
-    <ul>
-      <li v-for="todo in todos">
-        <span>{{ todo.text }}</span>
-        <button v-on:click="removeTodo($index)">X</button>
-      </li>
-    </ul>
-  </div>
-
-  <div id="example-1" class="appdiv click">
-    <a v-bind:href="url" v-bind:class="domclass" target="blank">V-bind A tag</a>
-    <div v-on:click="changeName" class="p click">v-if dom</div>
-    <span  v-if="greeting">Hello {{ name }}!</span>
-  </div>
-
-  <div id="example" class="appdiv click" v-on:click="changeClass" v-bind:class="{ 'class-a': isA, 'class-b': isB }">
-    a={{ a }}, b={{ b }},name={{fullName}}
-  </div>
-  <div id="example-2" class="appdiv click" v-on:click="changeClass" v-bind:class="[classA, { 'class-c': isC, 'class-b': isB }]">
-    name={{fullName}}
-  </div>
-  <div id="example-3" class="appdiv click" v-on:click="changeHeight" v-bind:style="styleObject">
-    <!-- v-if / v-show 不能使用在根本 element( #example-3 ) 上 -->
-    <div class="appdiv_in" v-if="if">
-      name={{fullName}}
-    </div>
-    <div class="appdiv_in" v-else>
-      name={{fullName3}}
-    </div>
-    <div class="appdiv_in" v-show="show">
-      name={{fullName2}}
-    </div>
-  </div>
-  <div id="example-4" class="appdiv click">
-    <ul v-on:click="appendItems">
-      <li v-for="i in items">
-        {{i.msg}}
-      </li>
-    </ul>
-  </div>
-  <div id="example-5" class="appdiv click">
-    <ul v-on:click="appendItems">
-      <li v-for="msg in items">
-        {{$key}}：{{msg}}
-      </li>
-    </ul>
-  </div>
-
+  
 </body>
 </html>
