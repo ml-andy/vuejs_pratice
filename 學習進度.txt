@@ -1,1 +1,1 @@
-https://vuejs.org/guide/syntax.html#Filters
+https://vuejs.org/guide/class-and-style.html#Array-Syntax

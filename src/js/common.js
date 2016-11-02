@@ -94,9 +94,13 @@
 		},
 		filters: {
 			checkNum: function (value,a,b) {
-				console.log(a);
-				console.log(b);
+				// console.log(a);
+				// console.log(b);
 				if (value <= 10 ) return '太小'
+				return value
+			},
+			checkNum2: function (value) {
+				// console.log(value);
 				return value
 			}
 		},
@@ -107,9 +111,105 @@
 			}
 		}
 	});
+	
+	var app11 = new Vue({
+		el: '#app-11',
+		data: {
+			message: 'ANDY',
+			ani: 'on'
+		},
+		computed: {
+			changeMsg: function(){
+				return this.message + ' 王逸賢' 
+			}
+		}
+	});
+
+	var app12 = new Vue({
+		el: '#app-12',
+		data: {
+			firstName: 'Foo',
+			lastName: 'Bar'
+		},
+		computed:{
+			fullName: {
+				// return this.firstName + ' ' + this.lastName
+				// getter
+				get: function () {
+					return this.firstName + ' ' + this.lastName
+				},
+				// setter
+				set: function (newValue) {
+					console.log(newValue);
+					var names = newValue.split(' ')
+					this.firstName = names[0]
+					this.lastName = names[names.length - 1]
+				}
+			}
+		}
+	});
+
+	var app13 = new Vue({
+		el: '#app-13',
+		data: {
+			question: '',
+			answer: 'I cannot give you an answer until you ask a question!',
+			timeout:''
+		},
+		watch: {
+			// whenever question changes, this function will run
+			question: function (newQuestion) {
+				this.answer = 'Waiting for you to stop typing...';
+				this.getAnswer();
+			}
+		},
+		methods: {
+			getAnswer: function () {
+				clearTimeout(this.timeout);
+				this.timeout = setTimeout(function(){
+					var vm = this
+					if (this.question.indexOf('?') === -1) {
+						vm.answer = 'Questions usually contain a question mark. ;-)';
+						return
+					}
+					vm.answer = 'Thinking...';
+				}.bind(this),500);
+			}
+		}
+	});
+
+	var app14 = new Vue({
+		el: '#app-14',
+		data:{
+			active: 'word',
+			on: true
+		}
+	});
+
+	var app15 = new Vue({
+		el: '#app-15',
+		data: {
+			// classObject:{
+				isOn: true,
+				off: null 
+			// }
+		},
+		computed: {
+			classObject: function () {
+				return {
+					on: this.isOn && !this.off,
+					off: true
+				}
+			}
+		}
+	});
 
 
-	// setTimeout(function(){
+	setTimeout(function(){
+		//app12 demo
+		// app12.fullName = 'John Doe' ;
+		// console.log(app12.$data.firstName);
 
-	// },3000);
+
+	},3000);
 })//ready end  

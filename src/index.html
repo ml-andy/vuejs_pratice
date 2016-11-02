@@ -52,7 +52,7 @@
   </div>
   <div id="app-7">
     <ol>
-      <todo-item v-for="todo in todos" v-bind:todo="todo"></todo-item>
+      <todo-item v-for="todo in todos" :todo="todo"></todo-item>
     </ol>
   </div>
   <div id="app-8">
@@ -61,11 +61,31 @@
   </div>
   <div id="app-9">
     <span>{{ ok ? 'YES' : 'NO' }}</span>
-    <button v-on:click="change">切換</button>
+    <button @click="change">切換</button>
   </div>
   <div id="app-10">
-    <span>{{ msg | checkNum('mgg',mgg) }}</span>
-    <button v-on:click="change">給我換!</button>
+    <span>{{ msg | checkNum('mgg',mgg) | checkNum2 }}</span>
+    <button @click="change">給我換!</button>
+  </div>
+  <div id="app-11">
+    <p>原始 message: "{{ message }}"</p>
+    <p :class="ani">改過的 message: "{{ changeMsg }}"</p>
+  </div>
+  <div id="app-12">
+    <span>{{ fullName }}</span>
+  </div>
+  <div id="app-13">
+    <p>
+      Ask a yes/no question:
+      <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
+  </div>
+  <div id="app-14">
+    <span class="static" :class="{ word: on }">bind class</span>
+  </div>
+  <div id="app-15">
+    <span class="static" :class="classObject">bind class with classObject</span>
   </div>
 </body>
 </html>
