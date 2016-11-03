@@ -204,6 +204,188 @@
 		}
 	});
 
+	var app16 = new Vue({
+		el: '#app-16',
+		data: {
+			styleObject:{
+				fontSize: '20px',
+				color: '#999'
+			},
+			mulitstyleObject: {
+				opacity: 0.8,
+				display: 'block'
+			}
+		}
+	});
+	
+	var app17 = new Vue({
+		el: '#app-17',
+		data:{
+			show: false
+		},
+		methods:{
+			isShow:function(){
+				if(this.show) this.show = false;
+				else this.show = true;
+			}
+		}
+	})
+
+	var app18 = new Vue({
+		el: '#app-18',
+		data:{
+			ok:true
+		}
+	})
+
+	var app19 = new Vue({
+		el: '#app-19',
+		data:{
+			ok:false
+		}
+	})
+
+	var app20 = new Vue({
+		el: '#app-20',
+		data:{
+			msgg:'parentYO',
+			items:[
+				{msg:'andy'},
+				{msg:'jacky'},
+				{msg:'mike'},
+				{msg:'scars'}
+			]
+		}
+	})
+
+	var app21 = new Vue({
+		el: '#app-21',
+		data:{
+			Object:{
+				city: '台北',
+				area: '大安區',
+				address: '通化街39巷62弄35號2樓'
+			}
+		}
+	})
+
+	Vue.component('todo-item2', {
+		template: '\
+			<li>\
+			{{ title }}\
+			<button @click="$emit(\'remove\')">X</button>\
+			</li>\
+		',
+		props: ['title']
+	});
+	new Vue({
+		el: '#todo-list-example',
+		data: {
+			newTodoText: '',
+			todos: [
+				'Do the dishes',
+				'Take out the trash',
+				'Mow the lawn'
+			]
+		},
+		methods: {
+			addNewTodo: function () {
+				this.todos.push(this.newTodoText)
+				this.newTodoText = ''
+			}
+		}
+	});
+
+	var app22 = new Vue({
+		el: '#app-22',
+		data:{
+			numbers:[ 'a', 'b', 'c', 'd', 'e' ]
+		},
+		computed:{
+			evenNumbers: function () {
+					return this.numbers.filter(function (number) {
+						return number
+					})
+			}
+		}
+	});
+
+	var app23 = new Vue({
+		el: '#app-23',
+		data:{
+			clickTime: 0
+		},
+		methods:{
+			addTime:function(e,word){
+				alert(word);
+				console.log('我是第' + $(e.target).index()+ '個!');
+				this.clickTime +=1;
+			}
+		}
+	});
+
+	var app24 = new Vue({
+		el: '#app-24',
+		methods:{
+			enterEvent:function(){
+				alert('enter');
+			},
+			upEvent:function(){
+				alert('up');
+			}
+		}
+	});
+
+	var app25 = new Vue({
+		el: '#app-25',
+		data: {
+			msg: ''
+		}
+	})
+
+	var app26 = new Vue({
+		el: '#app-26',
+		data:{
+			msg:''
+		}
+	})
+
+	var app27 = new Vue({
+		el: '#app-27',
+		data:{
+			zzzz:false
+		},
+		methods:{
+			checkAgree:function(){
+				alert('checked:'+this.zzzz);
+			}
+		}
+	})
+
+	var app28 = new Vue({
+		el:'#app-28',
+		data:{
+			checkname:[],
+			checkname2:[],
+			checkNum:[]
+		},
+		methods: {
+			checkAgree:function(){
+				alert('被選中的有:'+this.checkname + this.checkname2 + this.checkNum);
+			}
+		}
+	})
+
+	var app29 = new Vue({
+		el: '#app-29',
+		data:{
+			selected:'',
+			selectedddd:'',
+			numberinput:'',
+			option:false
+		}
+	})
+
 
 	setTimeout(function(){
 		//app12 demo

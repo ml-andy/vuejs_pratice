@@ -1,1 +1,1 @@
-https://vuejs.org/guide/class-and-style.html#Array-Syntax
+https://vuejs.org/guide/components.html#data-Must-Be-a-Function

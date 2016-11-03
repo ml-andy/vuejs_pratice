@@ -17,7 +17,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 <!---->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
 <!--css-->
 <link rel="stylesheet" href="css/common.css"/>
 <!--js-->
@@ -87,5 +87,118 @@
   <div id="app-15">
     <span class="static" :class="classObject">bind class with classObject</span>
   </div>
+  <div id="app-16">
+    <span :style="[styleObject,mulitstyleObject]">InLine style</span>
+  </div>
+  <div id="app-17">
+    <span v-if="show">可以秀</span>
+    <span v-else>不能秀</span>
+    <button @click="isShow">切換秀不秀</button>
+  </div>
+  <div id="app-18">
+    <span>template will not render</span>
+    <template v-if="ok">
+      <h1>andy</h1>
+      <p>teddy</p>
+    </template>
+  </div>
+  <div id="app-19">
+    <span v-show="ok">Hello</span>
+  </div>
+  <div id="app-20">
+    <ul>
+      <template v-for=" (i,o) in items">
+        <li>
+          {{i.msg}} + arrayindex：{{o}} + {{ msgg }}
+        </li>
+        <li>----------------------------</li>
+      </template>
+    </ul>
+  </div>
+  <div id="app-21">
+    <ul>
+      <template v-for="(i,key,index) in Object">
+        <li>************************</li>
+        <li>
+          {{index}}.{{key}} : {{i}}
+        </li>
+      </template>
+    </ul>
+  </div>
+  <div id="todo-list-example">
+    <input
+      v-model="newTodoText"
+      v-on:keyup.enter="addNewTodo"
+      placeholder="Add a todo"
+    >
+    <ul>
+      <li
+        is="todo-item2"
+        v-for="(todo, index) in todos"
+        :key="todo.id"
+        :title="todo"
+        @remove="todos.splice(index, 1)"
+      ></li>
+    </ul>
+  </div>
+  <div id="app-22">
+    <ul>
+      <li v-for="i in evenNumbers">{{ i }}</li>
+    </ul>
+  </div>
+  <div id="app-23">
+    <button @click="addTime($event,'yo')">點我+1</button>
+    <button @click.prevent="addTime($event,'YOYOYO')">點我+1</button>
+    <span>我被點擊了 {{ clickTime }} 次!</span>
+  </div>
+  <div id="app-24">
+    <input type="text" placeholder="在這裡按Enter / up" 
+      @keyup.enter="enterEvent" 
+      @keyup.up="upEvent"
+    >
+  </div>
+  <div id="app-25">
+    <input type="text" v-model="msg">
+    <span>{{ msg }}</span>
+  </div>
+  <div id="app-26">
+    <span style="white-space: pre">{{ msg }}</span><br>
+    <textarea v-model="msg" name="" id="" cols="30" rows="10"></textarea>
+  </div>
+  <div id="app-27">
+    <input type="checkbox" v-model="zzzz"><a href="#">隱私權</a>
+    <button @click="checkAgree">送出</button>
+  </div>
+  <div id="app-28">
+    <input id="jacky" type="checkbox" value="jacky" v-model="checkname">
+    <label for="jacky">Jacky</label>
+    <input id="andy" type="checkbox" value="andy" v-model="checkname">
+    <label for="andy">Andy</label>
+    <input id="mike" type="checkbox" value="mike" v-model="checkname">
+    <label for="mike">Mike</label>
+    <input type="radio" value="teddy" id="teddy" v-model="checkname2">
+    <label for="teddy">Teddy</label>
+    <input type="radio" value="scars" id="scars" v-model="checkname2">
+    <label for="scars">scars</label>
+    <select v-model="checkNum" multiple>
+      <option value="123">123</option>
+      <option value="456">456</option>
+    </select>
+    <button @click="checkAgree">送出</button>
+  </div>
+  <div id="app-29">
+    <template v-if="option">
+      <select v-model="selected">
+        <option v-for="i in option" :value="i.value">{{i.text}}</option>
+      </select>
+    </template>
+    <span>{{ selected }}</span><br>
+    <input type="text" v-model.lazy="selectedddd">
+    <span>{{ selectedddd }}</span><br>
+    <input type="number" v-model.number="numberinput">
+    <span>{{ numberinput }}</span>
+  </div>
+
+
 </body>
 </html>
