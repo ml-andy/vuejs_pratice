@@ -1,1 +1,1 @@
-https://vuejs.org/guide/components.html#data-Must-Be-a-Function
+https://vuefe.cn/v2/guide/components.html#Ã€¶®?•Û

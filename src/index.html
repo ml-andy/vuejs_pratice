@@ -197,7 +197,22 @@
     <span>{{ selectedddd }}</span><br>
     <input type="number" v-model.number="numberinput">
     <span>{{ numberinput }}</span>
+    <input type="text" v-model.trim="msg">
+    <span>{{ msg }}</span>
   </div>
+  <div id="app-30">
+    <my-component></my-component>
+  </div>
+  <div id="app-31">
+    <my-sec-component></my-sec-component>
+  </div>
+  <div id="app-32">
+    <button @click="checkCounter">check consoleLog</button>
+    <bt-com></bt-com>
+    <bt-com></bt-com>
+    <span-com></span-com>
+  </div>
+
 
 
 </body>

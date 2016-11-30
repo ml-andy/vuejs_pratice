@@ -379,19 +379,82 @@
 	var app29 = new Vue({
 		el: '#app-29',
 		data:{
-			selected:'',
+			selected:'123',
 			selectedddd:'',
 			numberinput:'',
+			msg:'12',
 			option:false
 		}
 	})
+	
+	Vue.component('my-component', { //不支援大寫寫法
+		template: '<div>這是一個component!!</div>'
+	})
+	var app30 = new Vue({
+		el: '#app-30'
+	})
+	
+	var child = {
+		template: '<span>這是一個component child!!</span>'
+	};
+	var app31 = new Vue({
+		el: '#app-31',
+		components:{
+			'my-sec-component': child
+		}
+	})
+
+	// Vue.component('bt-com', { //不支援大寫寫法
+	// 	template: '<button @click="btclick" >{{ counter }}</button>',
+	// 	data:function(){
+	// 		return data
+	// 	}
+	// })
+	var app32 = new Vue({
+		el: '#app-32',
+		components:{
+			'bt-com': {
+				data:function(){
+					return {
+						counter:2
+					}
+				},
+				template: '<button @click="btclick">{{ counter }}</button>',
+				methods:{
+					btclick:function(){
+						this.counter+=1;
+					}
+				}
+			},
+			'span-com': {
+				data:function(){
+					return {
+						spancounter:20
+					}
+				},
+				template: '<button @click="btclick">{{ spancounter }}</button>',
+				methods:{
+					btclick:function(){
+						this.spancounter+=1;
+					}
+				}
+			}
+		},
+		methods:{
+			checkCounter:function(){
+				console.log(this.$children[0].counter);
+				console.log(this.$children[1].counter);
+				console.log(this.$children[2].spancounter);
+			}
+		}
+	})
+
+
 
 
 	setTimeout(function(){
 		//app12 demo
 		// app12.fullName = 'John Doe' ;
 		// console.log(app12.$data.firstName);
-
-
 	},3000);
 })//ready end  
