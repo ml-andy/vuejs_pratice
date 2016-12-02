@@ -210,10 +210,22 @@
     <button @click="checkCounter">check consoleLog</button>
     <bt-com></bt-com>
     <bt-com></bt-com>
-    <span-com></span-com>
+    <span-com :message="parentMsg"></span-com>
+    <b-com :message="pppMsg"></b-com>
   </div>
-
-
+  <div id="app-33">
+    <p>{{ total }}</p>
+    <button-com @count="countTotal"></button-com>
+    <button-com @count="countTotal" @click.native="goalert"></button-com>
+  </div>
+  <div id="app-34">
+    <input-com v-model="price"></input-com>
+    <p>{{ total }}</p>
+  </div>
+  <div id="app-35">
+    <input-com v-model="price" :checkTotal="total"></input-com>
+    <input-com v-model="many" :checkTotal="total"></input-com>
+  </div>
 
 </body>
 </html>

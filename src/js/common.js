@@ -412,6 +412,10 @@
 	// })
 	var app32 = new Vue({
 		el: '#app-32',
+		data:{
+			parentMsg: '這是一個parentMsg',
+			pppMsg: '這是一個pppMsg'
+		},
 		components:{
 			'bt-com': {
 				data:function(){
@@ -427,9 +431,10 @@
 				}
 			},
 			'span-com': {
+				props: ['message'],
 				data:function(){
 					return {
-						spancounter:20
+						spancounter:this.message
 					}
 				},
 				template: '<button @click="btclick">{{ spancounter }}</button>',
@@ -438,6 +443,16 @@
 						this.spancounter+=1;
 					}
 				}
+			},
+			'b-com':{
+				props: ['message'],
+				computed: {
+					normalizedSize: function () {
+						// this.message = this.message +'?';
+						return this.message
+					}
+				},
+				template: '<b>{{ normalizedSize }}</b>',
 			}
 		},
 		methods:{
@@ -445,6 +460,129 @@
 				console.log(this.$children[0].counter);
 				console.log(this.$children[1].counter);
 				console.log(this.$children[2].spancounter);
+				this.pppMsg = this.pppMsg + '?';
+			}
+		}
+	})
+
+	var app33 = new Vue({
+		el:'#app-33',
+		data:{
+			total:0
+		},
+		components:{
+			'button-com':{
+				data:function(){
+					return {
+						counter:0
+					}
+				},
+				template: '<button class="btn" @click="goCounter">{{ counter }}</button>',
+				methods:{
+					goCounter:function(){
+						this.counter+=1;
+						this.$emit('count');
+					}
+				}
+			}
+		},
+		methods:{
+			goalert:function(){
+				console.log('123');
+			},
+			countTotal:function(){
+				this.total += 1;
+			}
+		}
+	})
+	
+	var app34 = new Vue({
+		el:'#app-34',
+		data:{
+			price:''
+		},
+		components:{
+			'input-com':{
+				props:['value'],
+				template: '\
+					<span>\
+					$\
+					<input\
+						ref="input"\
+						:value="value"\
+						@input="updateValue($event.target.value)"\
+					>\
+					</span>\
+				',
+				methods:{
+					updateValue:function(value){
+						var formattedValue = value
+						// 删除两侧的空格符
+						.trim()
+						// 保留 2 小数位
+						.slice(0, value.indexOf('.') + 3)
+						// 如果值不统一，手动覆盖以保持一致
+						if (formattedValue !== value) {
+							this.$refs.input.value = formattedValue
+						}
+						// 通过 input 事件发出数值
+						this.$emit('input', Number(formattedValue))
+					}
+				}
+			}
+		},
+		computed:{
+			total:function(){
+				return this.price
+			}
+		}
+	})
+
+	var app35 = new Vue({
+		el:'#app-35',
+		data:{
+			price:'',
+			many:''
+		},
+		components:{
+			'input-com':{
+				props:['value'],
+				template: '<input\
+						ref="input"\
+						:value="value"\
+						@input="updateValue($event.target.value)"\
+					>',
+				data:function(){
+					return {
+						checkTotal:this.total
+					}
+				},
+				methods:{
+					updateValue:function(value){
+						var formattedValue = value
+						// 删除两侧的空格符
+						.trim()
+						// 保留 2 小数位
+						.slice(0, value.indexOf('.') + 3)
+						// 如果值不统一，手动覆盖以保持一致
+						if (formattedValue !== value) {
+							this.$refs.input.value = formattedValue
+						}
+						// 通过 input 事件发出数值
+						this.$emit('input', Number(formattedValue))
+						// console.log(this.checkTotal);
+					}
+				}
+			}
+		},
+		computed:{
+			total:function(){
+				var obj ={
+					price:this.price,
+					many:this.many
+				};
+				console.log(obj);
+				return obj
 			}
 		}
 	})
