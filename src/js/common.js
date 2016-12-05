@@ -581,8 +581,22 @@
 					price:this.price,
 					many:this.many
 				};
-				console.log(obj);
+				// console.log(obj);
 				return obj
+			}
+		}
+	})
+
+	var app36 = new Vue({
+		el:'#app-36',
+		components:{
+			'test-com':{
+				template:'<div>\
+					<h3>我是子组件的标题</h3>\
+					<slot>\
+					沒有內容時顯示這段\
+					</slot>\
+					</div>'
 			}
 		}
 	})
