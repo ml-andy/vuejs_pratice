@@ -601,6 +601,65 @@
 		}
 	})
 	
+	var app37 = new Vue({
+		el:'#app-37',
+		components:{
+			'test-com':{
+				template:'<div class="container">\
+							<header>\
+							<slot name="header"></slot>\
+							</header>\
+							<main>\
+							<slot></slot>\
+							</main>\
+							<footer>\
+							<slot name="footer"></slot>\
+							</footer>\
+						</div>'
+			}
+		}
+	})
+
+	var app38 = new Vue({
+		el:'#app-38',
+		components:{
+			'child':{
+				template:
+				'<div class="child">\
+					<slot text="hello from child" ans="hello from ans"></slot>\
+				</div>'
+			}
+		}
+	})
+
+	var app39 = new Vue({
+		el:'#app-39',
+		data:{
+			items:[
+				{text:'aaaa'},
+				{text:'bbb'},
+				{text:'ccc'}
+			],
+			yo:[
+				{text:'1111'},
+				{text:'222'},
+				{text:'3333'}
+			]
+		},
+		components:{
+			'test-com':{
+				props:['words'],
+				template:
+				'<ul>\
+					<slot name="item"\
+					v-for="i in words"\
+					:text="i.text">\
+						<!-- 这里是备用内容 -->\
+					</slot>\
+				</ul>'
+			}
+		}
+	})
 
 
 

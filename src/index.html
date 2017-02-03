@@ -17,7 +17,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 <!---->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.0/vue.js"></script>
 <!--css-->
 <link rel="stylesheet" href="css/common.css"/>
 <!--js-->
@@ -232,6 +232,30 @@
     <test-com>
       <p>123456789</p>
       <p>000000000</p>
+    </test-com>
+  </div>
+  <div id="app-37">
+    <test-com>
+      <p>這是給預設的slot內容1</p>
+      <p>這是給預設的slot內容2</p>
+      <p slot="footer">這只給name是footer的內容</p>
+      <h1 slot="header">這只給name是header的內容</h1>
+    </test-com>
+  </div>
+  <div id="app-38">
+    <child>
+      <template scope="attr">
+        <span>hello from parent</span>
+        <span>{{ attr.text }}</span>
+      </template>
+    </child>
+  </div>
+  <div id="app-39">
+    <test-com :words="items">
+      <!-- 作用域插槽也可以在这里命名 -->
+      <template slot="item" scope="j">
+        <li class="my-fancy-item">{{ j.text }}</li>
+      </template>
     </test-com>
   </div>
 
