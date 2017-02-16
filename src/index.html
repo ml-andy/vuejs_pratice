@@ -258,6 +258,15 @@
       </template>
     </test-com>
   </div>
+  <div id="app-40">
+    <button @click="btnClick">change</button>
+    <keep-alive>
+      <!--加上keep-alive可以保留被切換的component-->
+      <component :is="currentView">
+        <!-- 组件在 vm.currentview 变化时改变！ -->
+      </component>
+    </keep-alive>
+  </div>
 
 </body>
 </html>

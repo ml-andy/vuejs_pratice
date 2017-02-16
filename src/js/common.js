@@ -659,6 +659,50 @@
 				</ul>'
 			}
 		}
+	});
+
+	var app40 = new Vue({
+		el:'#app-40',
+		data:{
+			nowNum:1,
+			currentView:'home'
+		},
+		components:{
+			home:{
+				props:['btnClick'],
+				template:'<p @click="pClick">home</p>',
+				methods:{
+					pClick:function(){
+						// this.$emit('count');
+						// app40.currentView = 'news';
+					}
+				}
+			},
+			news:{
+				template:'<p>news</p>'
+			},
+			products:{
+				template:'<p>products</p>'
+			}
+		},
+		methods:{
+			btnClick:function(){
+				// alert(this.nowNum);
+				this.nowNum+=1;
+				if(this.nowNum>3) this.nowNum=1;
+				switch(this.nowNum){
+					case 1:
+						this.currentView = 'home';
+						break;
+					case 2:
+						this.currentView = 'news';
+						break;
+					case 3:
+						this.currentView = 'products';
+						break;
+				}
+			}
+		}
 	})
 
 
