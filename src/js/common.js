@@ -704,6 +704,88 @@
 			}
 		}
 	})
+	var app41 = new Vue({
+		el:"#app-41",
+		data:{
+			show:true
+		}
+	})
+	var app42 = new Vue({
+		el:'#app-42',
+		data:{
+			docState:'b',
+			show:false
+		},
+		computed:{
+			buttonMessage:function(){
+				switch (this.docState){
+					case 'a': return 'A'
+					case 'b': return 'B'
+					case 'c': return 'C'
+				}
+			}
+		},
+		methods:{
+			changeKey:function(){
+				this.show = !this.show;
+				this.show ? this.docState='a' : this.docState='b';
+			}
+		}
+	});
+	var app43 = new Vue({
+		el:"#app-43",
+		data:{
+			view:'aaa'
+		},
+		components:{
+			'aaa':{
+				template:'<span>aaa</span>'
+			},
+			'bbb':{
+				template:'<span>bbb</span>'
+			},
+			'ccc':{
+				template:'<span>ccc</span>'
+			}
+		},
+		methods:{
+			changeTemp:function(){
+				switch(this.view){
+					case 'aaa': 
+						this.view = 'bbb';
+						break
+					case 'bbb': 
+						this.view = 'ccc';
+						break
+					case 'ccc': 
+						this.view = 'aaa';
+						break
+				}
+			}
+		}
+	});
+
+	var app44 = new Vue({
+		el:'#app-44',
+		data:{
+			items: [1,2,3,4,5,6,7,8,9],
+			nextNum: 10
+		},
+		methods:{
+			randomIndex: function () {
+				return Math.floor(Math.random() * this.items.length)
+			},
+			add:function(){
+				this.items.splice(this.randomIndex(), 0, this.nextNum++)
+			},
+			shuffle: function () {
+				this.items = _.shuffle(this.items)
+			},
+			remove:function(){
+				this.items.splice(this.randomIndex(), 1);
+			}
+		}
+	})
 
 
 
